@@ -542,6 +542,13 @@ inline void sort_branchless(Iter begin, Iter end) {
     sort_branchless(begin, end, std::less<T>());
 }
 
+template<class Iter>
+inline void sort_branchless(Iter begin, Iter end) {
+    typedef typename std::iterator_traits<Iter>::value_type T;
+    sort_branchless(begin, end, std::less<T>());
+    ::pdq::sort_branchless<Iter>(begin, end, std::less<T>());
+}
+
 } // namespace pdq
 
 #define pdqsort ::pdq::sort
